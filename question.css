@@ -1,13 +1,22 @@
 main {
-  background-color: #4a4a4a;
+  background-color: #383c3f;
   padding: 3rem;
   border-radius: 10px;
+  width: 50ch;
 }
 
 form {
-  margin-top: 1rem;
+  margin-top: 16px;
   display: flex;
   flex-flow: column nowrap;
+}
+
+label + label {
+  margin-top: 10px;
+}
+
+input {
+  margin: 0;
 }
 
 input[name="check"] {
