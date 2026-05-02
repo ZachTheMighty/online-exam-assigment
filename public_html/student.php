@@ -68,7 +68,49 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
+    if(preg_match("/add_question/", $htmlName))
+    {
+        $question = $_POST['question'];
+        $c1 = $_POST['c1'];
+        $c2 = $_POST['c2'];
+        $c3 = $_POST['c3'];
+        $answer = $_POST['answer'];
 
+        $sql = "INSERT INTO examQuestions (question,
+        first_choice, second_choice, third_choice,
+        answer) VALUES('$question', '$c1', '$c2', '$c3',
+        '$answer')";
+
+        if (mysqli_query($conn, $sql)) {
+            echo "New record created successfully\n";
+        } else
+            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
+
+    if(preg_match("/remove_question/", $htmlName))
+    {
+        $question = $_POST['question'];
+
+        $sql = "SELECT * FROM examQuestions WHERE question=$question";
+
+        $result = mysqli_query($conn, $sql);
+        $num_of_rows = mysqli_num_rows($result);
+
+        if($num_of_rows == 0)
+        {
+            echo "Could not find question: $question";
+            exit;
+        }
+
+        $sql = "DELETE FROM examQuestions WHERE question=$question";
+
+
+        if (mysqli_query($conn, $sql)) {
+            echo "Record deleted successfully";
+        } else {
+            echo "Error deleting record: " . mysqli_error($conn);
+        }
+    }
 }
 
 
