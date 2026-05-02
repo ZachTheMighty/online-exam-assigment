@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Add a Student</title>
+    <link rel="stylesheet" href="questions/reset.css" />
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <main>
+      <header>Please provide information for the question to be added</header>
+
+      <form action="student.php" method="POST">
+        <label for="question"
+          >Question name:
+          <input type="text" autocomplete="off" name="question" required
+        /></label>
+        <label for="q1"
+          >First Choice:
+          <input type="text" autocomplete="off" name="c1" required
+        /></label>
+        <label for="q2"
+          >Second Choice:
+          <input type="text" autocomplete="off" name="c2" required
+        /></label>
+        <label for="q3"
+          >Thrid Choice:
+          <input type="text" autocomplete="off" name="c3" required
+        /></label>
+        <label for="answer"
+          >Answer: <input type="text" autocomplete="off" name="answer" required
+        /></label>
+        <label for=""><input type="submit" value="Add question" /></label>
+      </form>
+    </main>
+  </body>
+</html>
