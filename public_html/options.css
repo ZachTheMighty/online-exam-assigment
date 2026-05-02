@@ -1,0 +1,21 @@
+main {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+header {
+  margin-bottom: 1rem;
+}
+
+label {
+  justify-content: space-between;
+}
+
+input[type="submit"] {
+  width: 100%;
+  padding: 4px;
+  font-size: inherit;
+  background-color: #0058ff;
+  color: white;
+}
