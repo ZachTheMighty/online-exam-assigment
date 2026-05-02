@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Remove student</title>
+    <link rel="stylesheet" href="questions/reset.css" />
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <main>
+      <header>Please provide the name of the question to be removed</header>
+
+      <form action="student.php" method="POST">
+        <label for="question"
+          >Question name:
+          <input type="text" autocomplete="off" name="question" required
+        /></label>
+        <label for=""><input type="submit" value="Remove question" /></label>
+      </form>
+    </main>
+  </body>
+</html>

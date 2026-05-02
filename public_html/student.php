@@ -91,7 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     {
         $question = $_POST['question'];
 
-        $sql = "SELECT * FROM examQuestions WHERE question=$question";
+        $sql = "SELECT * FROM examQuestions WHERE question='$question'";
 
         $result = mysqli_query($conn, $sql);
         $num_of_rows = mysqli_num_rows($result);
@@ -102,7 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit;
         }
 
-        $sql = "DELETE FROM examQuestions WHERE question=$question";
+        $sql = "DELETE FROM examQuestions WHERE question='$question'";
 
 
         if (mysqli_query($conn, $sql)) {
