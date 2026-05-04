@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Remove student</title>
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/options.css" />
+  </head>
+  <body>
+    <main>
+      <header>Please provide the ID for the student to be removed</header>
+
+      <form action="../php/student.php" method="POST">
+        <label for="id"
+          >ID:
+          <input
+            type="text"
+            autocomplete="off"
+            name="id"
+            required
+            pattern="\d{7}"
+            placeholder="e.g. 1234567"
+        /></label>
+        <label for=""><input type="submit" value="Remove student" /></label>
+      </form>
+    </main>
+  </body>
+</html>

@@ -3,21 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <title>Add a Student</title>
-    <link rel="stylesheet" href="questions/reset.css" />
-    <link rel="stylesheet" href="index.css" />
-    <link rel="stylesheet" href="options.css" />
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/options.css" />
   </head>
   <body>
     <main>
       <header>Please provide information for the student to be added</header>
 
-      <form action="student.php" id="add_student" method="POST">
+      <form action="../php/student.php" id="add_student" method="POST">
         <label for="name"
           >Student name:
           <input type="text" autocomplete="off" name="name" required
         /></label>
         <label for="id"
-          >ID: <input type="text" autocomplete="off" name="id" required
+          >ID:
+          <input
+            type="text"
+            autocomplete="off"
+            name="id"
+            required
+            pattern="\d{7}"
+            placeholder="e.g. 1234567"
         /></label>
         <label for="username"
           >Username:
@@ -28,7 +35,14 @@
           <input type="password" autocomplete="off" name="password" required
         /></label>
         <label for="grade"
-          >Grade: <input type="text" autocomplete="off" name="grade" required
+          >Grade:
+          <input
+            type="text"
+            autocomplete="off"
+            name="grade"
+            required
+            pattern="[0123]"
+            placeholder="e.g. 0, 1, 2 or 3"
         /></label>
         <label for=""><input type="submit" value="Add student" /></label>
       </form>

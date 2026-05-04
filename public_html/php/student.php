@@ -2,6 +2,7 @@
 <html>
 <body>
 <?php
+session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 $servername = "localhost";
@@ -15,13 +16,31 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
-echo "Connected successfully<br>";
+echo "Connected successfully to the database<br>";
 
-// sql to create table
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $htmlName = $_SERVER['HTTP_REFERER'];
+
+    if($htmlName == "http://localhost/")
+    {
+        $username = $_POST['username'];
+        $_SESSION['username'] = $username;
+
+        $sql = "SELECT * FROM studentList WHERE Username='$username'";
+        $result = mysqli_query($conn, $sql);
+        $num_of_rows = mysqli_num_rows($result);
+
+        if($num_of_rows == 0)
+        {
+            echo "Can't sign you in, as the student
+            with username '$username' couldn't be found in our database";
+            exit;
+        }
+
+        else header("Location: exam.php");
+    }
 
     if(preg_match("/add_student/", $htmlName))
     {
@@ -109,11 +128,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
-
-
-
 ?>
-
 </body>
 </html>
 
