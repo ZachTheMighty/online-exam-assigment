@@ -25,7 +25,6 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-
 if (!isset($_POST['next'])) {
   $_SESSION['questionID'] = 1;
   $_SESSION['grade'] = 0;
@@ -44,13 +43,16 @@ else {
   $_SESSION['questionID']++;
 }
 
-if ($_SESSION['questionID'] > 3) {
+$num_of_questions = mysqli_num_rows(mysqli_query($conn,
+"SELECT * FROM examQuestions"));
+
+if ($_SESSION['questionID'] > $num_of_questions) {
   $sql = "UPDATE studentList SET Grade = {$_SESSION['grade']}
           WHERE Username = '{$_SESSION['username']}'
   ";
   mysqli_query($conn, $sql);
 
-  echo "<main><h2>Your final result is: " . $_SESSION['grade'] . " / 3</h2></main>";
+  echo "<main><h2>Your final result is: " . $_SESSION['grade'] . " / $num_of_questions</h2></main>";
   exit;
 }
 
@@ -70,7 +72,7 @@ if ($row) {
 ?>
     <main>
     <header>
-      <h2><?php echo $id ?> / 3</h2>
+      <h2><?php echo "$id / $num_of_questions"?></h2>
     </header>
       <h2><?php echo $q ?></h2>
 
