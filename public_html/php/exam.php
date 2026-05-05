@@ -24,29 +24,28 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
+$num_of_questions = mysqli_num_rows(mysqli_query($conn,
+"SELECT * FROM examQuestions"));
 
 if (!isset($_POST['next'])) {
-  $_SESSION['questionID'] = 1;
+  $_SESSION['questionID'] = 0;
   $_SESSION['grade'] = 0;
 }
 
 else {
   $currentID = $_SESSION['questionID'];
-  $checkSql = "SELECT answer FROM examQuestions WHERE ID = $currentID";
+  $checkSql = "SELECT answer FROM examQuestions LIMIT 1 OFFSET {$_SESSION['questionID']}";
   $checkResult = mysqli_query($conn, $checkSql);
   $checkRow = mysqli_fetch_assoc($checkResult);
 
   if (isset($_POST['option']) && $checkRow && $_POST['option'] === $checkRow['answer']) {
     $_SESSION['grade']++;
   }
-
   $_SESSION['questionID']++;
 }
 
-$num_of_questions = mysqli_num_rows(mysqli_query($conn,
-"SELECT * FROM examQuestions"));
 
-if ($_SESSION['questionID'] > $num_of_questions) {
+if ($_SESSION['questionID'] >= $num_of_questions) {
   $sql = "UPDATE studentList SET Grade = {$_SESSION['grade']}
           WHERE Username = '{$_SESSION['username']}'
   ";
@@ -57,9 +56,10 @@ if ($_SESSION['questionID'] > $num_of_questions) {
 }
 
 $id = $_SESSION['questionID'];
-$sql = "SELECT * FROM examQuestions WHERE ID = $id";
+$sql = "SELECT * FROM examQuestions LIMIT 1 OFFSET {$_SESSION['questionID']}";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
+
 
 if ($row) {
   $q = $row['question'];
@@ -72,7 +72,7 @@ if ($row) {
 ?>
     <main>
     <header>
-      <h2><?php echo "$id / $num_of_questions"?></h2>
+      <h2><?php echo $id + 1 . " / ". $num_of_questions?></h2>
     </header>
       <h2><?php echo $q ?></h2>
 

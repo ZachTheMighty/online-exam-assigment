@@ -120,6 +120,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     {
         $question = $_POST['question'];
 
+
         $sql = "SELECT * FROM examQuestions WHERE question='$question'";
 
         $result = mysqli_query($conn, $sql);
@@ -133,12 +134,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $sql = "DELETE FROM examQuestions WHERE question='$question'";
 
-
         if (mysqli_query($conn, $sql)) {
             echo "Record deleted successfully";
         } else {
             echo "Error deleting record: " . mysqli_error($conn);
         }
+
     }
 }
 ?>
