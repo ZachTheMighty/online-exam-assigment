@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="../css/reset.css">
 <link rel="stylesheet" href="../css/question.css">
+<link rel="stylesheet" href="../css/teacher.css">
 </head>
 <body>
 
@@ -51,7 +52,9 @@ if ($_SESSION['questionID'] >= $num_of_questions) {
   ";
   mysqli_query($conn, $sql);
 
-  echo "<main><h2>Your final result is: " . $_SESSION['grade'] . " / $num_of_questions</h2></main>";
+  echo "<main><h2>Your final result is: " . $_SESSION['grade'] . " / $num_of_questions</h2>
+  <a href=http://localhost>Sign out</a>
+  </main>";
   exit;
 }
 
