@@ -61,11 +61,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $id = $_POST['id'];
         $username = $_POST['username'];
         $password = $_POST['password'];
-        $grade = $_POST['grade'];
 
         $sql = "INSERT INTO studentList (Name , ID, Username,
-        Password, Grade)
-        VALUES ('$name', '$id', '$username', '$password', '$grade')";
+        Password)
+        VALUES ('$name', '$id', '$username', '$password')";
 
         if (mysqli_query($conn, $sql)) {
             echo "New record created successfully\n";
