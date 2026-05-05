@@ -3,8 +3,10 @@
 <body>
 <?php
 session_start();
+
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+
 $servername = "localhost";
 $username = "klux";
 $password = "123";
@@ -39,7 +41,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit;
         }
 
-        else header("Location: exam.php");
+        else
+        {
+            $sql = "SELECT Password FROM studentList WHERE
+                Username='$username'
+            ";
+            $result = mysqli_query($conn, $sql);
+          $password = mysqli_fetch_assoc($result)['Password'];
+
+          if($_POST['password'] == $password)
+            header("Location: exam.php");
+            else echo "The password you entered was incorrect";
+        }
     }
 
     if(preg_match("/add_student/", $htmlName))
