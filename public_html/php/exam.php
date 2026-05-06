@@ -91,22 +91,22 @@ if ($row) {
       <h2><?php echo $q ?></h2>
 
       <form action="exam.php" method="post">
-        <label for="option"
+        <label
           ><input type="radio" name="option" autocomplete="off" value="<?php echo $c1?>" required/>
           <?php echo $c1?>
         </label>
 
-        <label for="option"
+        <label
           ><input type="radio" name="option" autocomplete="off" value="<?php echo $c2?>" required/>
           <?php echo $c2?>
         </label>
 
-        <label for="option"
+        <label
           ><input type="radio" name="option" autocomplete="off" value="<?php echo $c3?>" required/>
           <?php echo $c3?>
         </label>
 
-        <label for="next">
+        <label>
           <input type="submit" name="next" value="Next" />
         </label>
       </form>

@@ -11,12 +11,12 @@
     <main>
       <header>Please provide information for the student to be added</header>
 
-      <form action="../php/student.php" id="add_student" method="POST">
-        <label for="name"
+      <form action="../php/student.php" method="POST">
+        <label
           >Student name:
           <input type="text" autocomplete="off" name="name" required
         /></label>
-        <label for="id"
+        <label
           >ID:
           <input
             type="text"
@@ -26,15 +26,15 @@
             pattern="\d{7}"
             placeholder="e.g. 1234567"
         /></label>
-        <label for="username"
+        <label
           >Username:
           <input type="text" autocomplete="off" name="username" required
         /></label>
-        <label for="password"
+        <label
           >Password:
           <input type="password" autocomplete="off" name="password" required
         /></label>
-        <label for=""><input type="submit" value="Add student" /></label>
+        <label><input type="submit" value="Add student" /></label>
       </form>
     </main>
   </body>
