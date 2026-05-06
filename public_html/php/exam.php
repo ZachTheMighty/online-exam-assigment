@@ -6,6 +6,17 @@
 <link rel="stylesheet" href="../css/reset.css">
 <link rel="stylesheet" href="../css/question.css">
 <link rel="stylesheet" href="../css/teacher.css">
+<style>
+main
+{
+  align-items: stretch;
+}
+
+a
+{
+    text-align: center;
+}
+</style>
 </head>
 <body>
 
