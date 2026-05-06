@@ -50,7 +50,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           $password = mysqli_fetch_assoc($result)['Password'];
 
           if($_POST['password'] == $password)
-            header("Location: exam.php");
+          {
+              $sql = "SELECT * FROM examQuestions";
+              $result = mysqli_query($conn, $sql);
+              if(mysqli_num_rows($result) != 0)
+              header("Location: exam.php");
+
+              else
+              {
+                 echo "No questions have been added to the
+                 exam just yet, please come back later.";
+                 exit;
+            }
+        }
             else echo "The password you entered was incorrect";
         }
     }
